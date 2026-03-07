@@ -1,4 +1,15 @@
 local builtin = require('telescope.builtin')
+local telescope = require('telescope')
+
+telescope.setup({
+	defaults = {
+		layout_config = {
+			width = 0.9999,
+		},
+		layout_strategy = 'vertical'
+	}
+})
+
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>gf', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', function()
@@ -6,11 +17,6 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 
 vim.keymap.set('n', '<leader>pd', function()
-	builtin.diagnostics({
-		layout_config = {
-			width = 0.9999,
-		},
-		layout_strategy = 'vertical'
-	})
+	builtin.diagnostics()
 end
 , {})

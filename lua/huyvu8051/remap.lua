@@ -28,3 +28,6 @@ vim.keymap.set('v', '<leader>y', "\"+y")
 vim.keymap.set('n', '<leader>Y', "\"+Y")
 
 vim.keymap.set('n', '<leader>wn', "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+
+
+vim.keymap.set("n", "grr", require("telescope.builtin").lsp_references)

@@ -44,4 +44,8 @@ return require('packer').startup(function(use)
 			"saadparwaiz1/cmp_luasnip",
 		}
 	}
+
+	use {
+		'mfussenegger/nvim-dap'
+	}
 end)
