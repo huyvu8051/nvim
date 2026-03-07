@@ -7,7 +7,14 @@ telescope.setup({
 			width = 0.9999,
 		},
 		layout_strategy = 'vertical'
+	},
+	extensions = {
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown {
+				-- even more opts
+			} }
 	}
+
 })
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
@@ -20,3 +27,7 @@ vim.keymap.set('n', '<leader>pd', function()
 	builtin.diagnostics()
 end
 , {})
+
+
+require("telescope").load_extension("ui-select")
+

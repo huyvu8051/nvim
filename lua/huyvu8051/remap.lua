@@ -31,3 +31,22 @@ vim.keymap.set('n', '<leader>wn', "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 
 vim.keymap.set("n", "grr", require("telescope.builtin").lsp_references)
+
+-- jdtls specific features
+vim.keymap.set("n", "<leader>ev", require("jdtls").extract_variable)
+vim.keymap.set("v", "<leader>ev", function()
+  require("jdtls").extract_variable(true)
+end)
+vim.keymap.set("n", "<leader>ec", require("jdtls").extract_constant)
+vim.keymap.set("v", "<leader>ec", function()
+  require("jdtls").extract_constant(true)
+end)
+vim.keymap.set("v", "<leader>em", function()
+  require("jdtls").extract_method(true)
+end)
+vim.keymap.set("n", "<leader>oi", require("jdtls").organize_imports)
+vim.keymap.set("n", "<leader>tc", require("jdtls").test_class)
+vim.keymap.set("n", "<leader>tm", require("jdtls").test_nearest_method)
+vim.keymap.set("n", "<leader>up", require("jdtls").update_project_config)
+
+vim.keymap.set("n", "<leader>of", vim.diagnostic.open_float)

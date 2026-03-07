@@ -48,4 +48,6 @@ return require('packer').startup(function(use)
 	use {
 		'mfussenegger/nvim-dap'
 	}
+
+	use {'nvim-telescope/telescope-ui-select.nvim' }
 end)
