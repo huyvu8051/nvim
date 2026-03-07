@@ -5,6 +5,12 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.treesitter.start()
 	end,
 })
-
+vim.lsp.enable('luals')
 vim.lsp.enable('ts_ls')
 vim.lsp.enable('jdtls')
+
+vim.diagnostic.config({
+
+  virtual_text = true
+
+})
