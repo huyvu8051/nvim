@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["nvim-jdtls"] = {
+    loaded = true,
+    path = "/Users/huyvu8051/.local/share/nvim/site/pack/packer/start/nvim-jdtls",
+    url = "https://github.com/mfussenegger/nvim-jdtls"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/Users/huyvu8051/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
