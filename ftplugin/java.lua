@@ -20,4 +20,5 @@ jdtls.start_or_attach(config)
 -- enable debugger
 require('jdtls').setup_dap {
   hotcodereplace = 'auto',
+  config_overrides = {},
 }
