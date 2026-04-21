@@ -36,6 +36,9 @@ return {
     { '<leader>B', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = 'Debug: Set Breakpoint' },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     { '<F7>', function() require('dapui').toggle() end, desc = 'Debug: See last session result.' },
+    { '<F8>', function() require('dapui').toggle { layout = 1 } end, desc = 'Debug: See last session result.' },
+    { '<F9>', function() require('dapui').toggle { layout = 2 } end, desc = 'Debug: See last session result.' },
+    { '<F10>', function() require('dapui').toggle { layout = 3 } end, desc = 'Debug: See last session result.' },
   },
   config = function()
     local dap = require 'dap'
@@ -58,6 +61,9 @@ return {
       },
     }
 
+    local function get_half_height() return math.floor(vim.api.nvim_win_get_height(0) * 0.5) end
+    local function get_half_width() return math.floor(vim.api.nvim_win_get_width(0) * 0.3) end
+
     -- Dap UI setup
     -- For more information, see |:help nvim-dap-ui|
     ---@diagnostic disable-next-line: missing-fields
@@ -78,6 +84,32 @@ return {
           run_last = '▶▶',
           terminate = '⏹',
           disconnect = '⏏',
+        },
+      },
+      layouts = {
+        {
+          elements = {
+            { id = 'scopes', size = 0.4 },
+            { id = 'breakpoints', size = 0.2 },
+            { id = 'stacks', size = 0.2 },
+            { id = 'watches', size = 0.2 },
+          },
+          size = get_half_width(), -- width
+          position = 'left',
+        },
+        {
+          elements = {
+            'repl',
+          },
+          size = get_half_height(), -- height
+          position = 'bottom',
+        },
+        {
+          elements = {
+            'console',
+          },
+          size = get_half_height(), -- height
+          position = 'bottom',
         },
       },
     }
