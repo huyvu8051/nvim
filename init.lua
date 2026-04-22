@@ -83,6 +83,11 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
+--
+-- Force wget to ignore SSL checks for Mason downloads
+vim.env.WGETRC = '/dev/null'
+-- This creates a temporary setting just for this session
+vim.fn.setenv('WGET_OPTS', '--no-check-certificate')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -399,6 +404,11 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
+        defaults = {
+          layout_config = {
+            horizontal = { width = 0.9 },
+          },
+        },
         pickers = {
           colorscheme = {
             enable_preview = true,
@@ -886,7 +896,8 @@ require('lazy').setup({
     branch = 'main',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' }
+      local parsers =
+        { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'javascript', 'typescript', 'yaml' }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
