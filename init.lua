@@ -89,6 +89,11 @@ vim.env.WGETRC = '/dev/null'
 -- This creates a temporary setting just for this session
 vim.fn.setenv('WGET_OPTS', '--no-check-certificate')
 
+-- Setup java home for plugin
+local home = os.getenv 'HOME'
+local jdk_21_path = home .. '/.sdkman/candidates/java/21.0.2-graalce'
+vim.env.JAVA_HOME = jdk_21_path
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
