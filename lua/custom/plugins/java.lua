@@ -23,6 +23,19 @@ return {
 
       jdtls.start_or_attach(config)
       jdtls.setup_dap()
+
+      local dap = require 'dap'
+      dap.configurations.java = {
+        {
+          type = 'java',
+          request = 'launch',
+          name = 'Spring Boot (dev custom)',
+          mainClass = 'com.ubitec.ubiid.UbiidApiApplication',
+          projectName = 'ubiid-api',
+
+          vmArgs = '-Dspring.profiles.active=local',
+        },
+      }
     end,
   },
 }

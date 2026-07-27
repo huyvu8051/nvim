@@ -621,6 +621,11 @@ require('lazy').setup({
             },
             typeHints = {
               enable = true,
+          settings = {
+            ['rust-analyzer'] = {
+              cargo = {
+                features = { 'ssr', 'hydrate' },
+              },
             },
           },
         },
@@ -632,6 +637,7 @@ require('lazy').setup({
         -- ts_ls = {},
         jsonls = {},
         html = {},
+        ts_ls = {},
 
         stylua = {}, -- Used to format Lua code
 
@@ -840,7 +846,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'slate'
+      vim.cmd.colorscheme 'tokyonight-storm'
     end,
   },
 
@@ -898,7 +904,26 @@ require('lazy').setup({
     branch = 'main',
     -- [[ Configure Treesitter ]] See `:help nvim-treesitter-intro`
     config = function()
-      local parsers = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc', 'http', 'json' }
+      local parsers = {
+        'bash',
+        'c',
+        'diff',
+        'html',
+        'lua',
+        'luadoc',
+        'markdown',
+        'markdown_inline',
+        'query',
+        'vim',
+        'vimdoc',
+        'javascript',
+        'typescript',
+        'yaml',
+        'json',
+        'rust',
+        'toml',
+        'http'
+      }
       require('nvim-treesitter').install(parsers)
       vim.api.nvim_create_autocmd('FileType', {
         callback = function(args)
@@ -923,56 +948,7 @@ require('lazy').setup({
       })
     end,
   },
-  -- {
-  --   'rest-nvim/rest.nvim',
-  --   dependencies = {
-  --     'nvim-treesitter/nvim-treesitter',
-  --     opts = function(_, opts)
-  --       opts.ensure_installed = opts.ensure_installed or {}
-  --       table.insert(opts.ensure_installed, 'http')
-  --     end,
-  --   },
-  -- },
-  {
-    'mistweaverco/kulala.nvim',
-    keys = {
-      { '<leader>Rs', desc = 'Send request' },
-      { '<leader>Ra', desc = 'Send all requests' },
-      { '<leader>Rb', desc = 'Open scratchpad' },
-    },
-    ft = { 'http', 'rest' },
-    opts = {
-      global_keymaps = true,
-      global_keymaps_prefix = '<leader>R',
-      kulala_keymaps_prefix = '',
-    },
-  },
-  {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod', lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-    end,
-  },
-  {
-    -- Đường dẫn tuyệt đối đến thư mục project db.nvim của bạn
-    dir = '/Users/huyvu8051/projects/db.nvim',
-    name = 'db-browser',
-    -- Plugin này tự động kích hoạt thông qua folder plugin/ nên không cần config phức tạp
-    config = function()
-      -- Bạn có thể thêm các cấu hình riêng tại đây nếu muốn
-    end,
-  },
+
   {
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
@@ -1028,3 +1004,4 @@ require('lazy').setup({
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+--
