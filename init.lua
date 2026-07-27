@@ -600,6 +600,7 @@ require('lazy').setup({
           --
           -- This may be unwanted, since they displace some of your code
           if client and client:supports_method('textDocument/inlayHint', event.buf) then
+            vim.lsp.inlay_hint.enable(true)
             map('<leader>th', function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf }) end, '[T]oggle Inlay [H]ints')
           end
         end,
@@ -613,7 +614,16 @@ require('lazy').setup({
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
-        rust_analyzer = {},
+        rust_analyzer = {
+          inlayHints = {
+            parameterHints = {
+              enable = true,
+            },
+            typeHints = {
+              enable = true,
+            },
+          },
+        },
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
         --    https://github.com/pmizio/typescript-tools.nvim
@@ -964,8 +974,8 @@ require('lazy').setup({
     end,
   },
   {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
     opts = {},
   },
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
