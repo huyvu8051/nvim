@@ -615,16 +615,18 @@ require('lazy').setup({
         -- gopls = {},
         -- pyright = {},
         rust_analyzer = {
-          inlayHints = {
-            parameterHints = {
-              enable = true,
-            },
-            typeHints = {
-              enable = true,
           settings = {
             ['rust-analyzer'] = {
               cargo = {
                 features = { 'ssr', 'hydrate' },
+              },
+              inlayHints = {
+                parameterHints = {
+                  enable = true,
+                },
+                typeHints = {
+                  enable = true,
+                },
               },
             },
           },
