@@ -615,21 +615,7 @@ require('lazy').setup({
         -- gopls = {},
         -- pyright = {},
         rust_analyzer = {
-          settings = {
-            ['rust-analyzer'] = {
-              cargo = {
-                features = { 'ssr', 'hydrate' },
-              },
-              inlayHints = {
-                parameterHints = {
-                  enable = true,
-                },
-                typeHints = {
-                  enable = true,
-                },
-              },
-            },
-          },
+          
         },
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
