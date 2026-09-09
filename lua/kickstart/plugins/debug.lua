@@ -33,7 +33,11 @@ return {
     { '<F2>', function() require('dap').step_over() end, desc = 'Debug: Step Over' },
     { '<F3>', function() require('dap').step_out() end, desc = 'Debug: Step Out' },
     { '<leader>b', function() require('dap').toggle_breakpoint() end, desc = 'Debug: Toggle Breakpoint' },
-    { '<leader>B', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = 'Debug: Set Breakpoint' },
+    { '<leader>B', function() require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ') end, desc = 'Debug: Conditional Breakpoint' },
+    -- JetBrains-style "Pass count": only break after the Nth hit.
+    { '<leader>bh', function() require('dap').set_breakpoint(nil, vim.fn.input 'Hit condition (e.g. > 3, == 5): ') end, desc = 'Debug: Hit-count Breakpoint' },
+    -- JetBrains-style log point: print a message instead of suspending.
+    { '<leader>bl', function() require('dap').set_breakpoint(nil, nil, vim.fn.input 'Log message (supports {expr}): ') end, desc = 'Debug: Log Point' },
     -- Toggle to see last session result. Without this, you can't see session output in case of unhandled exception.
     { '<F7>', function() require('dapui').toggle() end, desc = 'Debug: See last session result.' },
     { '<F8>', function() require('dapui').toggle { layout = 1 } end, desc = 'Debug: See last session result.' },
